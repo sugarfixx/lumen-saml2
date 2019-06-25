@@ -47,7 +47,7 @@ class Saml2ServiceProvider extends ServiceProvider
     {
         $this->registerOneLoginInContainer();
 
-        $this->app->singleton('Aacotroneo\Saml2\Saml2Auth', function ($app) {
+        $this->app->singleton('Sugarfixx\Saml2\Saml2Auth', function ($app) {
 
             return new \Sugarfixx\Saml2\Saml2Auth($app['OneLogin_Saml2_Auth']);
         });

@@ -13,7 +13,7 @@ class Saml2Auth extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Aacotroneo\Saml2\Saml2Auth';
+        return 'Sugarfixx\Saml2\Saml2Auth';
     }
 
 }
