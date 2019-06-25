@@ -1,0 +1,39 @@
+{
+    "name": "sugarfixx/lumen-saml2",
+    "description": "A Laravel package for Saml2 integration as a SP (service provider) based on OneLogin toolkit, which is much lightweight than simplesamlphp",
+    "keywords": ["lumen","saml", "saml2", "onelogin"],
+    "homepage": "https://github.com/sugarfixx/lumen-saml2",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "sugarfixx",
+            "email": "ingar.torsrud@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-openssl": "*",
+        "illuminate/support": ">=5.0.0",
+        "onelogin/php-saml": "^3.0.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Sugarfixx\\Saml2\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sugarfixx\\Saml2\\Saml2ServiceProvider"
+            ],
+            "aliases": {
+                "Saml2": "Sugarfixx\\Saml2\\Facades\\Saml2Auth"
+            }
+        }
+    },
+    "minimum-stability": "stable"
+}
