@@ -1,5 +1,5 @@
 <?php
-namespace Sugarfixx\Saml2;
+namespace Sugarfixx\Saml2\Solo;
 
 use OneLogin\Saml2\Auth as OneLogin_Saml2_Auth;
 use OneLogin\Saml2\Utils as OneLogin_Saml2_Utils;
@@ -23,11 +23,11 @@ class Saml2ServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(config('saml2_settings.useRoutes', false) == true ){
+        if(config('solo_saml2_settings.useRoutes', false) == true ){
             include __DIR__ . '/../../routes.php';
         }
 
-        if (config('saml2_settings.proxyVars', false)) {
+        if (config('solo_saml2_settings.proxyVars', false)) {
             OneLogin_Saml2_Utils::setProxyVars(true);
         }
     }
@@ -41,9 +41,9 @@ class Saml2ServiceProvider extends ServiceProvider
     {
         $this->registerOneLoginInContainer();
 
-        $this->app->singleton('Sugarfixx\Saml2\Saml2Auth', function ($app) {
+        $this->app->singleton('Sugarfixx\Saml2\Solo\Saml2Auth', function ($app) {
 
-            return new \Sugarfixx\Saml2\Saml2Auth($app['OneLogin_Saml2_Auth']);
+            return new Saml2Auth($app['OneLogin_Saml2_Auth']);
         });
 
     }
@@ -51,7 +51,7 @@ class Saml2ServiceProvider extends ServiceProvider
     protected function registerOneLoginInContainer()
     {
         $this->app->singleton('OneLogin_Saml2_Auth', function ($app) {
-            $config = config('saml2_settings');
+            $config = config('solo_saml2_settings');
             if (empty($config['sp']['entityId'])) {
                 $config['sp']['entityId'] = URL::route('saml_metadata');
             }
