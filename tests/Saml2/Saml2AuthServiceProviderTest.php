@@ -2,7 +2,6 @@
 
 namespace Sugarfixx\Saml2;
 
-
 use App;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
@@ -10,8 +9,7 @@ use PHPUnit\Framework\TestCase;
 class Saml2AuthServiceProviderTest extends TestCase
 {
 
-
-    public function tearDown()
+    protected function tearDown()
     {
         m::close();
     }
@@ -26,3 +24,4 @@ class Saml2AuthServiceProviderTest extends TestCase
     }
 
 }
+
