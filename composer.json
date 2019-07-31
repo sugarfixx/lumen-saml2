@@ -29,10 +29,7 @@
         "laravel": {
             "providers": [
                 "Sugarfixx\\Saml2\\Saml2ServiceProvider"
-            ],
-            "aliases": {
-                "Saml2": "Sugarfixx\\Saml2\\Facades\\Saml2Auth"
-            }
+            ]
         }
     },
     "minimum-stability": "stable"

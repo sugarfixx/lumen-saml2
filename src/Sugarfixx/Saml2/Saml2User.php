@@ -7,7 +7,7 @@ use OneLogin\Saml2\Auth as OneLogin_Saml2_Auth;
 /**
  * A simple class that represents the user that 'came' inside the saml2 assertion
  * Class Saml2User
- * @package Sugarfixx\Saml2
+ * @package Aacotroneo\Saml2
  */
 class Saml2User
 {

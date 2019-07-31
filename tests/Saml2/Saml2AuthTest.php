@@ -59,6 +59,7 @@ class Saml2AuthTest extends TestCase
         $saml2 = new Saml2Auth($auth);
         $auth->shouldReceive('processResponse')->once();
         $auth->shouldReceive('getErrors')->once()->andReturn(array('errors'));
+        $auth->shouldReceive('getLastErrorReason')->once()->andReturn('last_error_reason');
 
         $error = $saml2->acs();
 
@@ -72,6 +73,7 @@ class Saml2AuthTest extends TestCase
         $saml2 = new Saml2Auth($auth);
         $auth->shouldReceive('processResponse')->once();
         $auth->shouldReceive('getErrors')->once()->andReturn(null);
+        $auth->shouldReceive('getLastErrorReason')->once()->andReturn(null);
         $auth->shouldReceive('isAuthenticated')->once()->andReturn(false);
         $error =  $saml2->acs();
 
@@ -98,8 +100,9 @@ class Saml2AuthTest extends TestCase
         $saml2 = new Saml2Auth($auth);
         $auth->shouldReceive('processSLO')->once();
         $auth->shouldReceive('getErrors')->once()->andReturn('errors');
+        $auth->shouldReceive('getLastErrorReason')->once()->andReturn('last_error_reason');
 
-        $error =  $saml2->sls();
+        $error =  $saml2->sls('test');
 
         $this->assertNotEmpty($error);
     }
@@ -111,7 +114,7 @@ class Saml2AuthTest extends TestCase
         $auth->shouldReceive('processSLO')->once();
         $auth->shouldReceive('getErrors')->once()->andReturn(null);
 
-        $error =  $saml2->sls();
+        $error =  $saml2->sls('test');
 
         $this->assertEmpty($error);
     }
@@ -173,13 +176,13 @@ class Saml2AuthTest extends TestCase
         $this->assertEquals($user->displayName, ['Test User']);
     }
 
-/**
-         * Cant test here. It uses Laravel dependencies (eg. config())
-         */
+    /**
+     * Cant test here. It uses Laravel dependencies (eg. config())
+     */
 
 //        $app = m::mock('Illuminate\Contracts\Foundation\Application[register,setDeferredServices]');
 //
-//        $s = m::mock('Sugarfixx\Saml2\Saml2ServiceProvider[publishes]', array($app));
+//        $s = m::mock('Aacotroneo\Saml2\Saml2ServiceProvider[publishes]', array($app));
 //        $s->boot();
 //        $s->shouldReceive('publishes');
 //
@@ -200,4 +203,3 @@ class Saml2AuthTest extends TestCase
 //        $this->assertEquals(2.71, $mock->e());
 
 }
-
