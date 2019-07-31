@@ -2,8 +2,8 @@
 
 namespace Sugarfixx\Saml2\Http\Controllers;
 
-use Aacotroneo\Saml2\Events\Saml2LoginEvent;
-use Aacotroneo\Saml2\Saml2Auth;
+use Sugarfixx\Saml2\Events\Saml2LoginEvent;
+use Sugarfixx\Saml2\Saml2Auth;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use OneLogin\Saml2\Auth as OneLogin_Saml2_Auth;

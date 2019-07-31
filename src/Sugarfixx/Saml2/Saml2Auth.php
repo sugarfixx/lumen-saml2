@@ -5,7 +5,7 @@ namespace Sugarfixx\Saml2;
 use OneLogin\Saml2\Auth as OneLogin_Saml2_Auth;
 use OneLogin\Saml2\Error as OneLogin_Saml2_Error;
 use OneLogin\Saml2\Utils as OneLogin_Saml2_Utils;
-use Aacotroneo\Saml2\Events\Saml2LogoutEvent;
+use Sugarfixx\Saml2\Events\Saml2LogoutEvent;
 
 use Log;
 use Psr\Log\InvalidArgumentException;
