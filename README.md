@@ -20,12 +20,12 @@ You can install the package via composer but first you need to add the following
 ```
 Then you can go ahead with:
 ```
-composer require aacotroneo/laravel-saml2
+composer require sugarfixx/lumen-saml2
 ```
 Or manually add this to your composer.json:
 
 ```json
-"aacotroneo/laravel-saml2": "*"
+"sugarfixx/lumen-saml2": "*"
 ```
 
 You need to register the service provider in bootstrap/app.php
@@ -69,7 +69,7 @@ Define names of all the IDPs you want to configure in saml2_settings.php. Option
     'idpNames' => ['test', 'myidp1', 'myidp2'],
 ```
 
-#### Configure laravel-saml2 to know about each IDP
+#### Configure lumen-saml2 to know about each IDP
 
 You will need to create a separate configuration file for each IDP under `app/config/` folder. e.g. `myidp1_idp_settings.php`. You can use `test_idp_settings.php` as the starting point; just copy it and rename it.
 
@@ -96,7 +96,7 @@ You can check the actual routes in the metadata, by navigating to 'http(s)://lum
 If you configure the optional `routesPrefix` setting in saml2_settings.php, then all idp routes will be prefixed by that value, so you'll need to adjust the metadata url accordingly. For example, if you configure routesPrefix to be `'single_sign_on'`, then your IDP metadata for myidp1 will be found at http://lumen_url/single_sign_on/myidp1/metadata.
 
 #### Example: simplesamlphp IDP configuration
-If you use simplesamlphp as a test IDP, and your SP metadata url is `http://lumen_url/myidp1/metadata`, add the following to /metadata/sp-remote.php to inform the IDP of your laravel-saml2 SP identity:
+If you use simplesamlphp as a test IDP, and your SP metadata url is `http://lumen_url/myidp1/metadata`, add the following to /metadata/sp-remote.php to inform the IDP of your lumen-saml2 SP identity:
 
 ```php
 $metadata['http://lumen_url/myidp1/metadata'] = array(
@@ -135,3 +135,6 @@ public function processAcs(Request $request)
 }
 ```
 
+For more inspiration on how this package can be used see the original Laravel5 - Saml2 readme at github.
+
+And that's it!
